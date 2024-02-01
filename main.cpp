@@ -23,7 +23,6 @@ cout << "+-------------------------------------------------+" << endl;// display
         cout << endl;
         cout << '+' << setfill('-')<< setw(58) << '+' << endl;
         cout << setfill(' ');
-		cout << "new" << endl;
         cout << '|' << setw(57) << left << "Enter account selection" << right << '|' << endl;
         cout << '|' << setw(57) << left << "1. Add new account" << right << '|' << endl;
         cout << '|' << setw(57) << left << "2. Deposit into Account" << right << '|' << endl;
@@ -53,7 +52,7 @@ cout << "+-------------------------------------------------+" << endl;// display
                 sys.PrintAcc();
                 break;
             case 6:
-                cout << "Thank you for running the program. Goodbye!" << endl;
+                cout << "Thank you for your business. Have a good day!" << endl;
                 break;
             default:
                 cout << "Error: Invalid selection. Enter a value between 1-6." << endl;// displays error when user enters number outside of the specified number.
