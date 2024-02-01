@@ -26,7 +26,7 @@ void Accounts :: loadAccounts()// takes input from the file
 	if(in)
 	{
 	in >> size;
-	for(!in.is_open()){
+	if(!in.is_open()){
 		Account temp;
 		in >> ID >> bal;
 		getline(in, name);
