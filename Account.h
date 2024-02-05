@@ -16,8 +16,8 @@ class Account{
 	int accountType;
 
     public:
-    Account();
-    ~Account();
+    Account(); // Default Constructor
+    ~Account(); // Destructor
     Account(const Account& origObj);
     Account& operator = (const Account& objToCopy);
     
