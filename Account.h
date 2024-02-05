@@ -5,10 +5,10 @@
 #include <iomanip>
 using namespace std;
 
-class Account
-{
+class Account{
 	friend class AccountChecking;
 	friend class AccountSaving;
+
     protected:
     int* accID;
     string cusName;
@@ -20,19 +20,20 @@ class Account
     ~Account();
     Account(const Account& origObj);
     Account& operator = (const Account& objToCopy);
-    Account& operator +=(const Account& origObj)
-	{
-		this->balance += origObj.balance;
+    
+    Account& operator +=(const Account& origObj){
+	    this -> balance += origObj.balance;
 		return *this;
-	};
-    virtual void deposit(double amt)
-	{
+    }
+
+    virtual void deposit(double amt){
 		balance += amt;
-	};
-    virtual void withdraw(double amt)
-	{
+	}
+
+    virtual void withdraw(double amt){
 		balance -= amt;
-	};
+	}
+
     void setName(string cusName);
     void setBalance(double balance);
     void setAccID(int id);
