@@ -4,27 +4,23 @@
 using namespace std;
 
 
-Accounts :: Accounts()
-{
-   counter = 0;// resets the counter
+Accounts :: Accounts(){
+   counter = 0; // resets the counter
 }
 
-Accounts :: ~Accounts()
-{
-    
+Accounts :: ~Accounts(){
 	counter = 0;
 }
 
-void Accounts :: loadAccounts()// takes input from the file
-{
+void Accounts :: loadAccounts(){
+
 	ifstream in("accounts.dat");
 	int size;
 	int ID;
 	double bal;
 	string name;
 	
-	if(in)
-	{
+	if(in){
 	in >> size;
 	if(!in.is_open()){
 		Account temp;
@@ -38,27 +34,23 @@ void Accounts :: loadAccounts()// takes input from the file
 		//cin.ignore();
 		firstObj.push_back(temp);
 		counter++;
-		
 	}
 	}
-	else
-	{
+	else{
 		cout << "Could not open the file." << endl;
 	}
+
 	in.close();
 }
 
-void Accounts :: storeAccounts()// stores output to the file
-{
+void Accounts :: storeAccounts(){ // stores the output to the file
 	ofstream out("accounts.dat");
-	if(!out.is_open())
-	{
+	if(!out.is_open()){
 		cout << "Could not open the file." << endl;
 		exit(1);
 	}
 		out << firstObj.size() << endl;
-	for (int i = 0; i < firstObj.size(); i++)
-	{
+	for (int i = 0; i < firstObj.size(); i++){
 		out << firstObj.at(i).GetaccID() << " ";
 		out << firstObj.at(i).GetBal() << " ";
 		out << firstObj.at(i).GetName() << endl;	
@@ -66,54 +58,42 @@ void Accounts :: storeAccounts()// stores output to the file
 	out.close();
 }
 	
-void Accounts :: addAcc(Account& temp)// updating the counter as the account is added
-{
-    if(counter <= firstObj.size())//condition for limit
-    {
+void Accounts :: addAcc(Account& temp){ // updating the counter as the account is added
+    if(counter <= firstObj.size()){ // condition for limit
         firstObj.push_back(temp);
         counter++;
     }
 
-    else 
-    {
+    else{
         cout << "Max capacity reached. Cannot add more accounts." << endl;
-
     }
 } 
 
-Account& Accounts :: findObj(int ID)// finds the object containinf the ID
-{
-    for (unsigned int i = 0; i < firstObj.size(); i++)
-    {
-        if(firstObj.at(i).GetaccID() == ID)
-        {
+Account& Accounts :: findObj(int ID){ // finds the object containinf the ID
+    for (unsigned int i = 0; i < firstObj.size(); i++){
+        if(firstObj.at(i).GetaccID() == ID){
             return firstObj.at(i);
         }
 
-        else
-        {
+        else{
             return firstObj.at(0);
         }
     } 
 }
 
-Account& Accounts :: at(const int i)  //returns the object of parameter
-{
-    if(i < counter)
-    {
+Account& Accounts :: at(const int i){ // returns the object of parameter
+    if(i < counter){
         return firstObj.at(i);
     }
-    else 
-    {
+
+    else{
         cout << "Index out of bounds." << endl;
         return firstObj.at(0);
     }
 }
 
-void Accounts :: PrintInfo()// prints info
-{
-	for ( int i = 0; i < firstObj.size(); i++)
-	{
+void Accounts :: PrintInfo(){ // prints info
+	for ( int i = 0; i < firstObj.size(); i++){
 	cout << '+' << setfill('-')<< setw(67) << '+' << endl;
 	cout << setfill(' ');
           cout << '|' << setw(2) << firstObj.at(i).GetaccID() << setw(2) << '|' << " " <<left <<  firstObj.at(i).GetName() << right << setw(25) << "|$" << setw(9) << left << firstObj.at(i).GetBal() << right << setw(13) << '|' << endl; 
